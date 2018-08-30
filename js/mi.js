@@ -11,4 +11,8 @@ $( document ).ready(function(){
 			bottom: $target.offset().top + $target.outerHeight() - $this.height()
 		});
 	});
+	$(".city").on('click', function(){
+        var bb = $("#c1").val();
+        alert(bb+"   hha");
+    });
 });
