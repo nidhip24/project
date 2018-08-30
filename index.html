@@ -42,13 +42,45 @@
         <!----------------------Login Modal-------------------------------->
         <div id="loginModal" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <h4>Login</h4>
+                <div class="row">
+                    <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="Username Here" id="usr_nme" type="Text" class="validate">
+                                    <label for="usr_nme">Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate">
+                                    <label for="email">Email</label>
+                                    <span class="helper-text" data-error="Invalid Email Address" data-success="right">
+                                
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="center">
+                                <label>
+                                    <input type="checkbox" checked="checked" />
+                                    <span>Remember Me! Or Not</span>
+                                </label>
+                            </p>
+                       </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
             </div>
         </div>
+
         <!----------------------Parallax Container------------------------------>
         <div class="parallax-container">
             <div class="parallax"><img src="https://materializecss.com/images/parallax1.jpg" ></div>
