@@ -37,25 +37,44 @@
             </nav>
         </div>
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="#">Login/register</a></li>
+            <li data-target="loginModal" class="modal-trigger"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
         </ul>
         <!----------------------Login Modal-------------------------------->
         <div id="loginModal" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <div class="modal-header">
+                    <div class="row col-row" style="height: 398px">
+                        <div class="col s5 col-log white-text">
+                            <h5>Login</h5>
+                            <p>Get access to your Orders, Wishlists and Recommendations</p>
+                        </div>
+                        <div class="col s7">
+                            <div class="row row-log-fields">
+                                <form class="col s12">
+                                    <div class="input-field col s12">
+                                        <input id="username" type="text" class="validate">
+                                        <label for="username">Username</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light white blue-text" type="submit" name="action" style="width: 100%">New to site? Sign up</button>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!----------------------Parallax Container------------------------------>
         <div class="parallax-container">
-            <div class="parallax"><img src="https://materializecss.com/images/parallax1.jpg" ></div>
-
-            <div class="caption center-align blue-grey darken-4" id="overl" style="bottom: 0;left: 0;position: absolute;">
-                sdadad
-            </div>
+            <div class="parallax"><img class="parallax-img" src="img/back3.jpg" ></div>
         </div>
         <div class="section black">
             <div class="row container">
@@ -66,7 +85,7 @@ Selling your vehicle through online system can be the easiest and the most profi
             </div>
         </div>
         <div class="parallax-container">
-            <div class="parallax"><img src="https://materializecss.com/images/parallax2.jpg"></div>
+            <div class="parallax"><img class="parallax-img" src="img/back3.jpg"></div>
             <div class="row city-cards">
                 <div class="col s3 city" value="mumbai">
                     <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
@@ -112,7 +131,7 @@ Selling your vehicle through online system can be the easiest and the most profi
             <div class="footer-copyright">
                 <div class="container">
                     © 2019 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">)</a>
+                    <a class="grey-text text-lighten-4 right" href="#!"></a>
                 </div>
             </div>
         </footer>

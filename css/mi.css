@@ -9,3 +9,56 @@
 	margin-top: : 20px !important;
 	padding-left: 20px !important;
 }
+
+@media screen and (min-width: 300px) and (min-width: 480px){
+	.modal{
+	    width:70% !important;
+	    height: 80% !important;
+	    margin:0 auto;
+	}
+}
+
+.modal{
+    width:55% !important;
+    height: 60% !important;
+    margin:0 auto;
+    /*add what you want here*/
+}
+
+.parallax-img{
+	width: 20%;
+}
+
+.modal-content{
+	padding: 0px !important;
+}
+
+.col-log{
+	background: #007bff;
+	padding-left: 20px !important;
+	padding-top: 30px !important;
+	height: 100% !important;
+}
+
+.col-row{
+	margin-bottom: 0px !important;
+	height: 100%;
+}
+
+.row-log-fields{
+	padding-top: 30px !important;
+	padding-left: 10px !important;
+}
+
+.input-field label {
+	color: grey;
+}
+
+.input-field input:focus + label {
+	color: grey !important;
+}
+
+.input-field input:focus {
+	border-bottom: 1px solid #64b5f6 !important;
+	box-shadow: 0 1px 0 0 #64b5f6 !important;
+}
