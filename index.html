@@ -23,34 +23,44 @@
     </style>
     </head>
 
-    <body>
+    <body onload="search()">
         <!----------------------Navigation Bar------------------------------>
         <div class="navbar-fixed">
-            <nav class="black z-depth-5">
+            <nav class="nav-color z-depth-5">
                 <div class="container nav-wrapper">
                     <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li data-target="loginModal" class="modal-trigger"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+                        <li>
+                            <div class="nav-wrapper">
+                                <form>
+                                    <div class="input-field">
+                                        <input id="search" type="search" required>
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>
         </div>
         <ul class="sidenav" id="mobile-demo">
-            <li data-target="loginModal" class="modal-trigger"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+            <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
         </ul>
         <!----------------------Login Modal-------------------------------->
-        <div id="loginModal" class="modal">
+        <div id="loginModal" class="modal" id="login-modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="row col-row" style="height: 398px">
-                        <div class="col s5 col-log white-text">
+                    <div class="row col-row" style="height: 398px" id="log-content">
+                        <div class="col s5 col-log white-text" id="modal-log-content">
                             <h5>Login</h5>
                             <p>Get access to your Orders, Wishlists and Recommendations</p>
                         </div>
                         <div class="col s7">
                             <div class="row row-log-fields">
-                                <form class="col s12">
+                                <form class="col s12" id="login-form">
                                     <div class="input-field col s12">
                                         <input id="username" type="text" class="validate">
                                         <label for="username">Username</label>
@@ -63,7 +73,40 @@
                                         <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
                                     </div>
                                     <div class="input-field col s12">
-                                        <button class="btn waves-effect waves-light white blue-text" type="submit" name="action" style="width: 100%">New to site? Sign up</button>
+                                        <button class="btn waves-effect waves-light white blue-text" style="width: 100%" id="register">New to site? Sign up</button>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>
+                    </div>
+                    <!-------register------------>
+                    <div class="row col-row" style="height: 398px" id="reg-content">
+                        <div class="col s5 col-log white-text" id="modal-log-content">
+                            <h5>Signup</h5>
+                            <p>We don not share your personal details with anyone.</p>
+                            <a href="#" class="white-text" style="font-size: 10px"><p id="aluser">Already a user?Click here!</p></a>
+                        </div>
+                        <div class="col s7">
+                            <div class="row row-log-fields">
+                                <form class="col s12" id="register-form">
+                                    <div class="input-field col s12">
+                                        <input id="uname" type="text" class="validate">
+                                        <label for="uname">Username</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="pass" type="password" class="validate">
+                                        <label for="pass">Password</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="name" type="text" class="validate">
+                                        <label for="name">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" class="validate">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
                                     </div>
                                 </form>
                             </div>  
@@ -72,11 +115,40 @@
                 </div>
             </div>
         </div>
+        <!----------------------Citymodal--------------------------------------->
+        <div id="choose-city" class="modal">
+            <div class="modal-content">
+                <div class="row city-cards">
+                    <div class="col s3 city" value="mumbai">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
+                            <span class="white-text">Mumbai</span>
+                        </div>
+                    </div>
+                    <div class="col s3 city" id="c1" value="mumbai">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Chennai</span>
+                        </div>
+                    </div>
+                    <div class="col s3 city" value="mumbai">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Kolkata</span>
+                        </div>
+                    </div>
+                    <div class="col s3 city" value="mumbai">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Delhi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!----------------------Parallax Container------------------------------>
         <div class="parallax-container">
-            <div class="parallax"><img class="parallax-img" src="img/back3.jpg" ></div>
+            <div class="parallax">
+                <img class="parallax-img" src="img/back3.jpg" >
+            </div>
         </div>
-        <div class="section black">
+        <div class="section nav-color">
             <div class="row container">
                 <h2 class="header white-text">Sell and buy car</h2>
                 <p class="grey-text text-darken-3 lighten-3">
@@ -86,28 +158,6 @@ Selling your vehicle through online system can be the easiest and the most profi
         </div>
         <div class="parallax-container">
             <div class="parallax"><img class="parallax-img" src="img/back3.jpg"></div>
-            <div class="row city-cards">
-                <div class="col s3 city" value="mumbai">
-                    <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                        <span class="white-text">Mumbai</span>
-                    </div>
-                </div>
-                <div class="col s3 city" id="c1" value="mumbai">
-                    <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                        <span class="white-text">Chennai</span>
-                    </div>
-                </div>
-                <div class="col s3 city" value="mumbai">
-                    <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                        <span class="white-text">Kolkata</span>
-                    </div>
-                </div>
-                <div class="col s3 city" value="mumbai">
-                    <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                        <span class="white-text">Delhi</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -140,6 +190,18 @@ Selling your vehicle through online system can be the easiest and the most profi
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/mi.js"></script>
-        
+        <script type="text/javascript">
+            function search(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        //document.getElementById("demo").innerHTML = this.responseText;
+                        console.log("hi"+this.responseText);
+                    }
+                };
+                xhttp.open("GET", "search.php?q="+, true);
+                xhttp.send();
+            }
+        </script>
     </body>
 </html>
