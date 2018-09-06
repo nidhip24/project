@@ -26,22 +26,13 @@
     <body onload="search()">
         <!----------------------Navigation Bar------------------------------>
         <div class="navbar-fixed">
-            <nav class="nav-color z-depth-5">
+            <nav class="nav-color z-depth-5 black">
                 <div class="container nav-wrapper">
                     <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <div class="nav-wrapper">
-                                <form>
-                                    <div class="input-field">
-                                        <input id="search" type="search" required>
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        
+                        <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+                        <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
                     </ul>
                 </div>
             </nav>
@@ -148,7 +139,7 @@
                 <img class="parallax-img" src="img/back3.jpg" >
             </div>
         </div>
-        <div class="section nav-color">
+        <div class="section nav-color black">
             <div class="row container">
                 <h2 class="header white-text">Sell and buy car</h2>
                 <p class="grey-text text-darken-3 lighten-3">
