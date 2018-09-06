@@ -16,5 +16,15 @@ $( document ).ready(function(){
         alert(bb+"   hha");
     });
 
-    $('#')
+    $('#reg-content').hide();
+    $('#register').on('click',function(){
+    	$('#log-content').hide();
+    	$('#reg-content').show();
+    	
+    });
+    $('#aluser').on('click',function(){
+    	$('#reg-content').hide();
+    	$('#log-content').show();
+    	
+    });
 });
