@@ -44,7 +44,7 @@
         <div id="loginModal" class="modal" id="login-modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="row col-row" style="height: 398px" id="log-content">
+                    <div class="row col-row" style="height: 440px" id="log-content">
                         <div class="col s5 col-log white-text" id="modal-log-content">
                             <h5>Login</h5>
                             <p>Get access to your Orders, Wishlists and Recommendations</p>
@@ -64,18 +64,18 @@
                                         <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
                                     </div>
                                     <div class="input-field col s12">
-                                        <button class="btn waves-effect waves-light white blue-text" style="width: 100%" id="register">New to site? Sign up</button>
+                                        <a class="waves-effect waves-light white blue-text btn" style="width: 100%" id="register">New to site? Sign up</a>
                                     </div>
                                 </form>
                             </div>  
                         </div>
                     </div>
                     <!-------register------------>
-                    <div class="row col-row" style="height: 398px" id="reg-content">
+                    <div class="row col-row" style="height: 450px" id="reg-content">
                         <div class="col s5 col-log white-text" id="modal-log-content">
                             <h5>Signup</h5>
                             <p>We don not share your personal details with anyone.</p>
-                            <a href="#" class="white-text" style="font-size: 10px"><p id="aluser">Already a user?Click here!</p></a>
+                            <a class="white-text" style="font-size: 10px"><p id="aluser">Already a user?Click here!</p></a>
                         </div>
                         <div class="col s7">
                             <div class="row row-log-fields">
@@ -110,22 +110,22 @@
         <div id="choose-city" class="modal">
             <div class="modal-content">
                 <div class="row city-cards">
-                    <div class="col s3 city" value="mumbai">
+                    <div class="col s3" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
                             <span class="white-text">Mumbai</span>
                         </div>
                     </div>
-                    <div class="col s3 city" id="c1" value="mumbai">
+                    <div class="col s3" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Chennai</span>
                         </div>
                     </div>
-                    <div class="col s3 city" value="mumbai">
+                    <div class="col s3" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Kolkata</span>
                         </div>
                     </div>
-                    <div class="col s3 city" value="mumbai">
+                    <div class="col s3" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Delhi</span>
                         </div>
@@ -157,14 +157,17 @@ Selling your vehicle through online system can be the easiest and the most profi
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">Car Selling</h5>
-                        <p class="grey-text text-lighten-4">In progress...</p>
+                        <h5 class="white-text">Brands</h5>
+                        <p class="grey-text text-lighten-4">Volvo</p>
+                        <p class="grey-text text-lighten-4">Volkswagen</p>
+                        <p class="grey-text text-lighten-4">Maruti Suzuki</p>
                     </div>
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Terms and conditions</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -190,7 +193,7 @@ Selling your vehicle through online system can be the easiest and the most profi
                         console.log("hi"+this.responseText);
                     }
                 };
-                xhttp.open("GET", "search.php?q="+, true);
+                xhttp.open("GET", "search.php?q=", true);
                 xhttp.send();
             }
         </script>

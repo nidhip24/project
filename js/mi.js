@@ -11,8 +11,8 @@ $( document ).ready(function(){
 			bottom: $target.offset().top + $target.outerHeight() - $this.height()
 		});
 	});
-	$(".city").on('click', function(){
-        var bb = $("#c1").val();
+	$('[id="city1"]').on('click', function(){
+        var bb = $('[id="city1"]').val();
         alert(bb+"   hha");
     });
 
