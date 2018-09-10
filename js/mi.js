@@ -11,8 +11,8 @@ $( document ).ready(function(){
 			bottom: $target.offset().top + $target.outerHeight() - $this.height()
 		});
 	});
-	$('[id="city1"]').on('click', function(){
-        var bb = $('[id="city1"]').val();
+	$('[id=city1]').on('click', function(){
+        var bb = $('[id=city1]').val();
         alert(bb+"   hha");
     });
 
@@ -26,5 +26,14 @@ $( document ).ready(function(){
     	$('#reg-content').hide();
     	$('#log-content').show();
     	
+    });
+
+    $(window).on("load", function() {
+        preloaderFadeOutTime = 2000;
+        function hidePreloader() {
+            var preloader = $('.spinner-wrapper');
+            preloader.fadeOut(preloaderFadeOutTime);
+        }
+        hidePreloader();
     });
 });
