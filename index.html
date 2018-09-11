@@ -205,6 +205,18 @@ Selling your vehicle through online system can be the easiest and the most profi
                 xhttp.open("GET", "search.php?q=", true);
                 xhttp.send();
             }
+            $(document).ready(function() {
+                //Preloader
+                $(window).on("load", function() {
+                    preloaderFadeOutTime = 2000;
+                    function hidePreloader() {
+                        var preloader = $('.spinner-wrapper');
+                        preloader.fadeOut(preloaderFadeOutTime);
+                    }
+                    hidePreloader();
+                });
+            });
+
         </script>
     </body>
 </html>
