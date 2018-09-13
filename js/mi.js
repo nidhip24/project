@@ -27,6 +27,5 @@ $( document ).ready(function(){
     	$('#log-content').show();
     	
     });
-
-    
+    $('.dropdown-trigger').dropdown();
 });

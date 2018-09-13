@@ -23,7 +23,7 @@
     </style>
     </head>
 
-    <body onload="search()">
+    <body>
         <div class="spinner-wrapper">
             <div class="spinner">
                 <div class="rect1"></div>
@@ -39,8 +39,9 @@
                 <div class="container nav-wrapper">
                     <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
+                    <ul class="right hide-on-med-and-down" id="nav-list">
                         <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+                        <li data-target="dropdown1" class="dropdown-trigger" id="user-id"><a id="userl" href="#"><i class="material-icons right">person</i></a></li>
                         <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
                     </ul>
                 </div>
@@ -48,6 +49,12 @@
         </div>
         <ul class="sidenav" id="mobile-demo">
             <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+            <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="profile.php">My profile</a></li>
+            <li><a href="#!" onclick="logout()">Logout</a></li>
         </ul>
         <!----------------------Login Modal-------------------------------->
         <div id="loginModal" class="modal" id="login-modal">
@@ -60,17 +67,17 @@
                         </div>
                         <div class="col s7">
                             <div class="row row-log-fields">
-                                <form class="col s12" id="login-form">
+                                <form class="col s12" id="login-form" method="post" action="php/login.php">
                                     <div class="input-field col s12">
-                                        <input id="username" type="text" class="validate" required>
+                                        <input id="username" type="text" class="validate" name="username" required>
                                         <label for="username">Username</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="password" type="password" class="validate" required>
+                                        <input id="password" type="password" class="validate" name="password" required>
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
+                                        <button class="btn waves-effect waves-light orange" style="width: 100%">Submit</button>
                                     </div>
                                     <div class="input-field col s12">
                                         <a class="waves-effect waves-light white blue-text btn" style="width: 100%" id="register">New to site? Sign up</a>
@@ -88,21 +95,21 @@
                         </div>
                         <div class="col s7">
                             <div class="row row-log-fields">
-                                <form class="col s12" id="register-form">
+                                <form class="col s12" id="register-form" method="post" action="php/register.php">
                                     <div class="input-field col s12">
-                                        <input id="uname" type="text" class="validate">
+                                        <input id="uname" type="text" class="validate" name="uname">
                                         <label for="uname">Username</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="pass" type="password" class="validate">
+                                        <input id="pass" type="password" class="validate" name="pass">
                                         <label for="pass">Password</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="name" type="text" class="validate">
+                                        <input id="name" type="text" class="validate" name="name">
                                         <label for="name">Name</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="email" type="email" class="validate">
+                                        <input id="email" type="email" class="validate" name="email">
                                         <label for="email">Email</label>
                                     </div>
                                     <div class="input-field col s12">
@@ -159,8 +166,7 @@ Selling your vehicle through online system can be the easiest and the most profi
         <div class="parallax-container">
             <div class="parallax"><img class="parallax-img" src="img/back3.jpg"></div>
         </div>
-
-
+        
         <!--------------------------Footer------------------------------------>
         <footer class="page-footer black">
             <div class="container">
@@ -193,7 +199,8 @@ Selling your vehicle through online system can be the easiest and the most profi
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/mi.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script>
             function search(){
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -205,15 +212,81 @@ Selling your vehicle through online system can be the easiest and the most profi
                 xhttp.open("GET", "search.php?q=", true);
                 xhttp.send();
             }
+            function logout(){
+                $.removeCookie('username', { path: '/' });
+                $("#user-id").hide();
+                $("#loginModal-id").show();
+                console.log("logged out");
+            }
             $(document).ready(function() {
+                console.log("username : "+ $.cookie("username"));
+                if (document.cookie.indexOf('username') == -1 ) {
+                    console.log("empty");
+                    $("#user-id").hide();
+                }else{
+                    $("#loginModal-id").hide();
+                    $("#user-id").show();
+                    $("#userl").prepend($.cookie("username"));
+                }
+
                 //Preloader
                 $(window).on("load", function() {
-                    preloaderFadeOutTime = 2000;
+                    preloaderFadeOutTime = 1000;
                     function hidePreloader() {
                         var preloader = $('.spinner-wrapper');
                         preloader.fadeOut(preloaderFadeOutTime);
                     }
                     hidePreloader();
+                });
+                $('#login-form').submit(function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: $('#login-form').attr('method'),
+                        url: $('#login-form').attr('action'),
+                        data: $('#login-form').serialize(),
+                        success: function (data) {
+                            //console.log('Submission was successful.');
+                            //console.log(data);
+                            if(data==="found"){
+                                alert("logged in");
+                                $("#loginModal-id").hide();
+                                $("#user-id").show();
+                                $("#userl").prepend($.cookie("username"));
+                                $('.modal').modal().close();
+                            }else{
+                                alert("Invalid username or passwords");
+                            }
+                        },
+                        error: function (data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
+                });
+                $('#register-form').submit(function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: $('#register-form').attr('method'),
+                        url: $('#register-form').attr('action'),
+                        data: $('#register-form').serialize(),
+                        success: function (data) {
+                            //console.log('Submission was successful.');
+                            //console.log(data);
+                            if(data==="done"){
+                                alert("login to continue");
+                                $('#reg-content').hide();
+                                $('#log-content').show();
+                            }else{
+                                alert("Try again later...!");
+                            }
+                        },
+                        error: function (data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
                 });
             });
 
