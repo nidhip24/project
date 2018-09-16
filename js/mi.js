@@ -11,10 +11,6 @@ $( document ).ready(function(){
 			bottom: $target.offset().top + $target.outerHeight() - $this.height()
 		});
 	});
-	$('[id=city1]').on('click', function(){
-        var bb = $('[id=city1]').val();
-        alert(bb+"   hha");
-    });
 
     $('#reg-content').hide();
     $('#register').on('click',function(){
@@ -22,10 +18,8 @@ $( document ).ready(function(){
     	$('#reg-content').show();
     	
     });
-    $('#aluser').on('click',function(){
-    	$('#reg-content').hide();
-    	$('#log-content').show();
-    	
-    });
+    
     $('.dropdown-trigger').dropdown();
+
+    
 });

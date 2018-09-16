@@ -6,13 +6,16 @@
 	$email = $_POST["email"];
 	$name = $_POST["name"];
 
-	$sql = "INSERT INTO `userdata`(`username`, `password`, `email`, `name`) VALUES ('".$username."','".$password."','".$email."','".$name."')";
+	if($username=="" || $password=="" || $email="" || $name=""){
+		echo "f";
+	}else{
+		$sql = "INSERT INTO `userdata`(`username`, `password`, `email`, `name`) VALUES ('".$username."','".$password."','".$email."','".$name."')";
 
-	if ($conn->query($sql) === TRUE) {
-	    echo "done";
-	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
+		if ($conn->query($sql) === TRUE) {
+		    echo "done";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 	}
-
 	$conn->close();
-	?>
+?>

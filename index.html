@@ -24,6 +24,7 @@
     </head>
 
     <body>
+        <!------------------Preloader---------------->
         <div class="spinner-wrapper">
             <div class="spinner">
                 <div class="rect1"></div>
@@ -42,7 +43,8 @@
                     <ul class="right hide-on-med-and-down" id="nav-list">
                         <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
                         <li data-target="dropdown1" class="dropdown-trigger" id="user-id"><a id="userl" href="#"><i class="material-icons right">person</i></a></li>
-                        <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
+                        <li data-target="choose-city" class="modal-trigger" id="city-id"><a id="cityli"><i class="material-icons right">my_location</i>choose city</a></li>
+                        <li data-target="search-mod" class="modal-trigger"><a><i class="material-icons right">search</i>Search</a></li>
                     </ul>
                 </div>
             </nav>
@@ -51,21 +53,21 @@
             <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
             <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
         </ul>
-        <!-- Dropdown Structure -->
+        <!-------Dropdown Structure------------------>
         <ul id='dropdown1' class='dropdown-content'>
             <li><a href="profile.php">My profile</a></li>
-            <li><a href="#!" onclick="logout()">Logout</a></li>
+            <li><a onclick="logout()">Logout</a></li>
         </ul>
-        <!----------------------Login Modal-------------------------------->
+        <!----------------------Modal for login and register-------------------------------->
         <div id="loginModal" class="modal" id="login-modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row col-row" style="height: 440px" id="log-content">
-                        <div class="col s5 col-log white-text" id="modal-log-content">
+                        <div class="col s12 m5 col-log white-text" id="modal-log-content">
                             <h5>Login</h5>
                             <p>Get access to your Orders, Wishlists and Recommendations</p>
                         </div>
-                        <div class="col s7">
+                        <div class="col s12 m6">
                             <div class="row row-log-fields">
                                 <form class="col s12" id="login-form" method="post" action="php/login.php">
                                     <div class="input-field col s12">
@@ -79,7 +81,7 @@
                                     <div class="input-field col s12">
                                         <button class="btn waves-effect waves-light orange" style="width: 100%">Submit</button>
                                     </div>
-                                    <div class="input-field col s12">
+                                    <div class="input-field col s12 ">
                                         <a class="waves-effect waves-light white blue-text btn" style="width: 100%" id="register">New to site? Sign up</a>
                                     </div>
                                 </form>
@@ -88,12 +90,12 @@
                     </div>
                     <!-------register------------>
                     <div class="row col-row" style="height: 450px" id="reg-content">
-                        <div class="col s5 col-log white-text" id="modal-log-content">
+                        <div class="col s12 m5 col-log white-text" id="modal-log-content">
                             <h5>Signup</h5>
                             <p>We don not share your personal details with anyone.</p>
-                            <a class="white-text" style="font-size: 10px"><p id="aluser">Already a user?Click here!</p></a>
+                            <a class="white-text" style="font-size: 10px"><p class="aluser">Already a user?Click here!</p></a>
                         </div>
-                        <div class="col s7">
+                        <div class="col s12 m6">
                             <div class="row row-log-fields">
                                 <form class="col s12" id="register-form" method="post" action="php/register.php">
                                     <div class="input-field col s12">
@@ -115,6 +117,9 @@
                                     <div class="input-field col s12">
                                         <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
                                     </div>
+                                    <div class="input-field col s12 show-on-medium-and-down">
+                                        <a class="black-text" style="font-size: 10px"><p class="aluser">Already a user?Click here!</p></a>
+                                    </div>
                                 </form>
                             </div>  
                         </div>
@@ -126,26 +131,48 @@
         <div id="choose-city" class="modal">
             <div class="modal-content">
                 <div class="row city-cards">
-                    <div class="col s3" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
                             <span class="white-text">Mumbai</span>
                         </div>
                     </div>
-                    <div class="col s3" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Chennai</span>
                         </div>
                     </div>
-                    <div class="col s3" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Kolkata</span>
                         </div>
                     </div>
-                    <div class="col s3" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Delhi</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!----------------------Search Modal--------------------------------->
+        <div id="search-mod" class="modal transparent search-modal" >
+            <div class="modal-content">
+                <div class="row">
+                    <nav>
+                        <div class="nav-wrapper blue">
+                            <form>
+                                <div class="input-field">
+                                    <input id="searchf" type="search" required>
+                                    <label class="label-icon" for="searchf"><i class="material-icons">search</i></label>
+                                    <i class="material-icons">close</i>
+                                    <div class="collection" id="search-results">
+                                        <a href="#!" class="collection-item">Alvin</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -158,8 +185,7 @@
         <div class="section nav-color black">
             <div class="row container">
                 <h2 class="header white-text">Sell and buy car</h2>
-                <p class="grey-text text-darken-3 lighten-3">
-Selling your vehicle through online system can be the easiest and the most profitable option. The process of its work is almost same as that of the traditional medium, and you will never become confused. However, the most important point is that there are many websites that will allow you to sell your car online for free. Thus, you can post your advertisement without investing any money. But the time it takes to sell a car privately ranges from a few hours to never. It is because of the countless factors which influence the decision making process. However, if you start out with right price and expectations then it becomes easier for you to sell your car. Internet is thus the most user-friendly option that can give you the best car selling experience.</p>
+                <p class="grey-text text-darken-3 lighten-3">Selling your vehicle through online system can be the easiest and the most profitable option. The process of its work is almost same as that of the traditional medium, and you will never become confused. However, the most important point is that there are many websites that will allow you to sell your car online for free. Thus, you can post your advertisement without investing any money. But the time it takes to sell a car privately ranges from a few hours to never. It is because of the countless factors which influence the decision making process. However, if you start out with right price and expectations then it becomes easier for you to sell your car. Internet is thus the most user-friendly option that can give you the best car selling experience.</p>
 
             </div>
         </div>
@@ -201,33 +227,92 @@ Selling your vehicle through online system can be the easiest and the most profi
         <script type="text/javascript" src="js/mi.js"></script>
         <script type="text/javascript" src="js/jquery.cookie.js"></script>
         <script>
-            function search(){
+
+            function search(va){
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         //document.getElementById("demo").innerHTML = this.responseText;
                         console.log("hi"+this.responseText);
+                        $("#search-results").empty();
+                        $("#search-results").prepend(this.responseText);
                     }
                 };
-                xhttp.open("GET", "search.php?q=", true);
+                xhttp.open("GET", "search.php?q="+va, true);
                 xhttp.send();
             }
+            //logout function
             function logout(){
                 $.removeCookie('username', { path: '/' });
                 $("#user-id").hide();
                 $("#loginModal-id").show();
-                console.log("logged out");
+                $("#userl").empty();
+                M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
             }
+            //login function
             $(document).ready(function() {
-                console.log("username : "+ $.cookie("username"));
-                if (document.cookie.indexOf('username') == -1 ) {
+                //console.log("username : "+ $.cookie("username"));
+
+                //search-field keypress event
+                $("#searchf").keyup(function(){
+                    var q = $("#searchf").val();
+                    console.log("keypress event fired"+ $("#searchf").val());
+                    search(q);
+                });
+
+                $('.aluser').on('click',function(){
+                    console.log("cliock");
+                    $('#reg-content').hide();
+                    $('#log-content').show();
+                    
+                });
+
+                if (document.cookie.indexOf('city') == -1 ) {
                     console.log("empty");
-                    $("#user-id").hide();
                 }else{
-                    $("#loginModal-id").hide();
-                    $("#user-id").show();
-                    $("#userl").prepend($.cookie("username"));
+                    $('#cityli').empty();
+                    $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +$.cookie("city"));
                 }
+
+                //city card on click listener
+                $(".city1").click(function(){
+                    var cname = $(this).text().trim();
+                    if (cname==="Mumbai") {
+                        console.log("m");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Chennai"){
+                        console.log("ch");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Kolkata"){
+                        console.log("ko");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Delhi"){
+                        console.log("del");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else{
+                        console.log("fuck");
+                    } 
+                });
+                //login function
+                function login(){
+                    if (document.cookie.indexOf('username') == -1 ) {
+                        //console.log("empty");
+                        $("#user-id").hide();
+                    }else{
+                        $("#loginModal-id").hide();
+                        $("#user-id").show();
+                        $("#userl").prepend($.cookie("username"));
+                    }
+                }
+                login();
 
                 //Preloader
                 $(window).on("load", function() {
@@ -238,6 +323,8 @@ Selling your vehicle through online system can be the easiest and the most profi
                     }
                     hidePreloader();
                 });
+
+                //ajax login form submit
                 $('#login-form').submit(function (e) {
                     e.preventDefault();
 
@@ -249,13 +336,14 @@ Selling your vehicle through online system can be the easiest and the most profi
                             //console.log('Submission was successful.');
                             //console.log(data);
                             if(data==="found"){
-                                alert("logged in");
                                 $("#loginModal-id").hide();
                                 $("#user-id").show();
-                                $("#userl").prepend($.cookie("username"));
-                                $('.modal').modal().close();
+                                M.toast({html: 'Login successfully', classes: 'rounded toast-mod'});
+                                //$("#userl").prepend($.cookie("username"));
+                                login();
+                                $('.modal').modal('close');
                             }else{
-                                alert("Invalid username or passwords");
+                                M.toast({html: 'Invalid username or passwords', classes: 'rounded toast-mod'});
                             }
                         },
                         error: function (data) {
@@ -264,6 +352,8 @@ Selling your vehicle through online system can be the easiest and the most profi
                         },
                     });
                 });
+
+                //ajax register form submit
                 $('#register-form').submit(function (e) {
                     e.preventDefault();
 
@@ -275,11 +365,13 @@ Selling your vehicle through online system can be the easiest and the most profi
                             //console.log('Submission was successful.');
                             //console.log(data);
                             if(data==="done"){
-                                alert("login to continue");
+                                M.toast({html: 'Registered successfully', classes: 'rounded toast-mod'});
+                                M.toast({html: 'Login to continue...', classes: 'rounded toast-mod'});
                                 $('#reg-content').hide();
                                 $('#log-content').show();
                             }else{
                                 alert("Try again later...!");
+                                $('.modal').modal().close();
                             }
                         },
                         error: function (data) {
