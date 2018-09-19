@@ -1,5 +1,6 @@
 $( document ).ready(function(){
 	$('.sidenav').sidenav();
+	$('.collapsible').collapsible();
 	$('.modal').modal();
 	$('.dropdown-trigger').dropdown();
 	$('.parallax').parallax();

@@ -12,36 +12,208 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <!----------------------Navigation Bar------------------------------>
+        <div class="navbar-fixed">
+            <nav class="nav-color  black">
+                <div class="container nav-wrapper">
+                    <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down" id="nav-list">
+                        <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+                        <li data-target="dropdown1" class="dropdown-trigger" id="user-id"><a id="userl" href="#"><i class="material-icons right">person</i></a></li>
+                        <li data-target="choose-city" class="modal-trigger" id="city-id"><a id="cityli"><i class="material-icons right">my_location</i>choose city</a></li>
+                        <li data-target="search-mod" class="modal-trigger"><a><i class="material-icons right">search</i>Search</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
+            <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
+            <li data-target="choose-city" class="modal-trigger" id="city-id"><a href="#"><i class="material-icons right">my_location</i>choose city</a></li>
+        </ul>
+        <!-------Dropdown Structure------------------>
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="profile.php">My profile</a></li>
+            <li><a onclick="logout()">Logout</a></li>
+        </ul>
+        <!----------------------Modal for login and register-------------------------------->
+        <div id="loginModal" class="modal" id="login-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row col-row" style="height: 440px" id="log-content">
+                        <div class="col s12 m5 col-log white-text" id="modal-log-content">
+                            <h5>Login</h5>
+                            <p>Get access to your Orders, Wishlists and Recommendations</p>
+                        </div>
+                        <div class="col s12 m6">
+                            <div class="row row-log-fields">
+                                <form class="col s12" id="login-form" method="post" action="php/login.php">
+                                    <div class="input-field col s12">
+                                        <input id="username" type="text" class="validate" name="username" required>
+                                        <label for="username">Username</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" class="validate" name="password" required>
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light orange" style="width: 100%">Submit</button>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <a class="waves-effect waves-light white blue-text btn" style="width: 100%" id="register">New to site? Sign up</a>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>
+                    </div>
+                    <!-------register------------>
+                    <div class="row col-row" style="height: 450px" id="reg-content">
+                        <div class="col s12 m5 col-log white-text" id="modal-log-content">
+                            <h5>Signup</h5>
+                            <p>We don not share your personal details with anyone.</p>
+                            <a class="white-text" style="font-size: 10px"><p class="aluser">Already a user?Click here!</p></a>
+                        </div>
+                        <div class="col s12 m6">
+                            <div class="row row-log-fields">
+                                <form class="col s12" id="register-form" method="post" action="php/register.php">
+                                    <div class="input-field col s12">
+                                        <input id="uname" type="text" class="validate" name="uname">
+                                        <label for="uname">Username</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="pass" type="password" class="validate" name="pass">
+                                        <label for="pass">Password</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="name" type="text" class="validate" name="name">
+                                        <label for="name">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" class="validate" name="email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light orange" type="submit" name="action" style="width: 100%">Submit</button>
+                                    </div>
+                                    <div class="input-field col s12 show-on-medium-and-down">
+                                        <a class="black-text" style="font-size: 10px"><p class="aluser">Already a user?Click here!</p></a>
+                                    </div>
+                                </form>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------------------Citymodal--------------------------------------->
+        <div id="choose-city" class="modal">
+            <div class="modal-content">
+                <div class="row city-cards">
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
+                            <span class="white-text">Mumbai</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Chennai</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Kolkata</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
+                            <span class="white-text">Delhi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <div class="row">
-                <div class="col s4">
+        <!----------------------Search Modal--------------------------------->
+        <div id="search-mod" class="modal transparent search-modal" >
+            <div class="modal-content">
+                <div class="row">
                     <nav>
-                        <div class="nav-wrapper grey">
+                        <div class="nav-wrapper blue">
                             <form>
                                 <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                    <input id="searchf" type="search" required>
+                                    <label class="label-icon" for="searchf"><i class="material-icons">search</i></label>
                                     <i class="material-icons">close</i>
+                                    <div class="collection" id="search-results">
+                                        <a href="#!" class="collection-item">Alvin</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </nav>
                 </div>
             </div>
+        </div>
+
+        <!-----------------------Filer---------------------------------------->
+        <div class="row" style="height: 1000px;padding-top: 20px; background: #FAFAFA">
+            <div class="col s3 white z-depth-1" style="height: 400px">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                </ul>
+            </div>            
+            <div class="col s8">
+                
+            </div>
+        </div>
+
+
+        <!--------------------------Footer------------------------------------>
+        <footer class="page-footer black">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Brands</h5>
+                        <p class="grey-text text-lighten-4">Volvo</p>
+                        <p class="grey-text text-lighten-4">Volkswagen</p>
+                        <p class="grey-text text-lighten-4">Maruti Suzuki</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Terms and conditions</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2019 Copyright Text
+                    <a class="grey-text text-lighten-4 right" href="#!"></a>
+                </div>
+            </div>
+        </footer>
+            
 
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/mi.js"></script>
         <script>
-            $(document).ready(function() {
-                //console.log("username : "+ $.cookie("username"));
-
-                //search-field keypress event
-                $("#search").keyup(function(){
-                    console.log("keypress event fired");
-                });
-            });
+           
         </script>
     </body>
 </html>
