@@ -10,33 +10,11 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            html, body, .block {
-                height: 100%;
-            }
-            nav ul li a:hover, nav ul li a.active {
-                background-color: rgba(0,0,0,.10);
-            }
-            footer {
-                padding-left: 0;
-            }
-    </style>
     </head>
-
     <body>
-        <!------------------Preloader---------------->
-        <div class="spinner-wrapper">
-            <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-            </div>
-        </div>
         <!----------------------Navigation Bar------------------------------>
         <div class="navbar-fixed">
-            <nav class="nav-color z-depth-5 black">
+            <nav class="nav-color  black">
                 <div class="container nav-wrapper">
                     <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -130,43 +108,6 @@
         <!----------------------Citymodal--------------------------------------->
         <div id="choose-city" class="modal">
             <div class="modal-content">
-<<<<<<< HEAD
-                <h4>Login</h4>
-                <div class="row">
-                    <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input placeholder="Username Here" id="usr_nme" type="Text" class="validate">
-                                    <label for="usr_nme">Username</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="password" type="password" class="validate">
-                                    <label for="password">Password</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate">
-                                    <label for="email">Email</label>
-                                    <span class="helper-text" data-error="Invalid Email Address" data-success="right">
-                                
-                                    </span>
-                                </div>
-                            </div>
-                            <p class="center">
-                                <label>
-                                    <input type="checkbox" checked="checked" />
-                                    <span>Remember Me! Or Not</span>
-                                </label>
-                            </p>
-                       </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-=======
                 <div class="row city-cards">
                     <div class="col s12 m4 city1" value="mumbai" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
@@ -210,28 +151,34 @@
                             </form>
                         </div>
                     </nav>
->>>>>>> 30/8
                 </div>
             </div>
         </div>
 
-        <!----------------------Parallax Container------------------------------>
-        <div class="parallax-container">
-            <div class="parallax">
-                <img class="parallax-img" src="img/back3.jpg" >
+        <!-----------------------Filer---------------------------------------->
+        <div class="row" style="height: 1000px;padding-top: 20px; background: #FAFAFA">
+            <div class="col s3 white z-depth-1" style="height: 400px">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        </li>
+                </ul>
+            </div>            
+            <div class="col s8">
+                
             </div>
         </div>
-        <div class="section nav-color black">
-            <div class="row container">
-                <h2 class="header white-text">Sell and buy car</h2>
-                <p class="grey-text text-darken-3 lighten-3">Selling your vehicle through online system can be the easiest and the most profitable option. The process of its work is almost same as that of the traditional medium, and you will never become confused. However, the most important point is that there are many websites that will allow you to sell your car online for free. Thus, you can post your advertisement without investing any money. But the time it takes to sell a car privately ranges from a few hours to never. It is because of the countless factors which influence the decision making process. However, if you start out with right price and expectations then it becomes easier for you to sell your car. Internet is thus the most user-friendly option that can give you the best car selling experience.</p>
 
-            </div>
-        </div>
-        <div class="parallax-container">
-            <div class="parallax"><img class="parallax-img" src="img/back3.jpg"></div>
-        </div>
-        
+
         <!--------------------------Footer------------------------------------>
         <footer class="page-footer black">
             <div class="container">
@@ -259,168 +206,14 @@
                 </div>
             </div>
         </footer>
-        
+            
+
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/mi.js"></script>
-        <script type="text/javascript" src="js/jquery.cookie.js"></script>
         <script>
-
-            function search(va){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        //document.getElementById("demo").innerHTML = this.responseText;
-                        console.log("hi"+this.responseText);
-                        $("#search-results").empty();
-                        $("#search-results").prepend(this.responseText);
-                    }
-                };
-                xhttp.open("GET", "search.php?q="+va, true);
-                xhttp.send();
-            }
-            //logout function
-            function logout(){
-                $.removeCookie('username', { path: '/' });
-                $("#user-id").hide();
-                $("#loginModal-id").show();
-                $("#userl").empty();
-                M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
-            }
-            //login function
-            $(document).ready(function() {
-                //console.log("username : "+ $.cookie("username"));
-
-                //search-field keypress event
-                $("#searchf").keyup(function(){
-                    var q = $("#searchf").val();
-                    console.log("keypress event fired"+ $("#searchf").val());
-                    search(q);
-                });
-
-                $('.aluser').on('click',function(){
-                    console.log("cliock");
-                    $('#reg-content').hide();
-                    $('#log-content').show();
-                    
-                });
-
-                if (document.cookie.indexOf('city') == -1 ) {
-                    console.log("empty");
-                }else{
-                    $('#cityli').empty();
-                    $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +$.cookie("city"));
-                }
-
-                //city card on click listener
-                $(".city1").click(function(){
-                    var cname = $(this).text().trim();
-                    if (cname==="Mumbai") {
-                        console.log("m");
-                        $.cookie("city", cname , { path : '/' });
-                        $('#cityli').empty();
-                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
-                    }else if(cname==="Chennai"){
-                        console.log("ch");
-                        $.cookie("city", cname , { path : '/' });
-                        $('#cityli').empty();
-                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
-                    }else if(cname==="Kolkata"){
-                        console.log("ko");
-                        $.cookie("city", cname , { path : '/' });
-                        $('#cityli').empty();
-                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
-                    }else if(cname==="Delhi"){
-                        console.log("del");
-                        $.cookie("city", cname , { path : '/' });
-                        $('#cityli').empty();
-                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
-                    }else{
-                        console.log("fuck");
-                    } 
-                });
-                //login function
-                function login(){
-                    if (document.cookie.indexOf('username') == -1 ) {
-                        //console.log("empty");
-                        $("#user-id").hide();
-                    }else{
-                        $("#loginModal-id").hide();
-                        $("#user-id").show();
-                        $("#userl").prepend($.cookie("username"));
-                    }
-                }
-                login();
-
-                //Preloader
-                $(window).on("load", function() {
-                    preloaderFadeOutTime = 1000;
-                    function hidePreloader() {
-                        var preloader = $('.spinner-wrapper');
-                        preloader.fadeOut(preloaderFadeOutTime);
-                    }
-                    hidePreloader();
-                });
-
-                //ajax login form submit
-                $('#login-form').submit(function (e) {
-                    e.preventDefault();
-
-                    $.ajax({
-                        type: $('#login-form').attr('method'),
-                        url: $('#login-form').attr('action'),
-                        data: $('#login-form').serialize(),
-                        success: function (data) {
-                            //console.log('Submission was successful.');
-                            //console.log(data);
-                            if(data==="found"){
-                                $("#loginModal-id").hide();
-                                $("#user-id").show();
-                                M.toast({html: 'Login successfully', classes: 'rounded toast-mod'});
-                                //$("#userl").prepend($.cookie("username"));
-                                login();
-                                $('.modal').modal('close');
-                            }else{
-                                M.toast({html: 'Invalid username or passwords', classes: 'rounded toast-mod'});
-                            }
-                        },
-                        error: function (data) {
-                            console.log('An error occurred.');
-                            console.log(data);
-                        },
-                    });
-                });
-
-                //ajax register form submit
-                $('#register-form').submit(function (e) {
-                    e.preventDefault();
-
-                    $.ajax({
-                        type: $('#register-form').attr('method'),
-                        url: $('#register-form').attr('action'),
-                        data: $('#register-form').serialize(),
-                        success: function (data) {
-                            //console.log('Submission was successful.');
-                            //console.log(data);
-                            if(data==="done"){
-                                M.toast({html: 'Registered successfully', classes: 'rounded toast-mod'});
-                                M.toast({html: 'Login to continue...', classes: 'rounded toast-mod'});
-                                $('#reg-content').hide();
-                                $('#log-content').show();
-                            }else{
-                                alert("Try again later...!");
-                                $('.modal').modal().close();
-                            }
-                        },
-                        error: function (data) {
-                            console.log('An error occurred.');
-                            console.log(data);
-                        },
-                    });
-                });
-            });
-
+           
         </script>
     </body>
 </html>

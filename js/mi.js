@@ -1,5 +1,6 @@
 $( document ).ready(function(){
 	$('.sidenav').sidenav();
+	$('.collapsible').collapsible();
 	$('.modal').modal();
 	$('.dropdown-trigger').dropdown();
 	$('.parallax').parallax();
@@ -11,4 +12,15 @@ $( document ).ready(function(){
 			bottom: $target.offset().top + $target.outerHeight() - $this.height()
 		});
 	});
+
+    $('#reg-content').hide();
+    $('#register').on('click',function(){
+    	$('#log-content').hide();
+    	$('#reg-content').show();
+    	
+    });
+    
+    $('.dropdown-trigger').dropdown();
+
+    
 });

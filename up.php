@@ -12,7 +12,11 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
+<<<<<<< HEAD
 	for($x = 0; $x <= 100000; $x++){
+=======
+	for($x = 0; $x <= 10000; $x++){
+>>>>>>> 30/8
 		$companyname = array("Volvo", "BMW", "Toyota","Hyundai","TATA","Maruti Suzuki","Mahindra","Datsun","Renault","Audi","Ford","Volkswagen");
 
 		$carname = array("Volvo XC90","BMW 5 Series 520d Luxury Line","Toyota Fortuner","Hyundai Verna","Tata Nexon","Maruti Suzuki Vitara Brezza","Mahindra Scorpio","Datsun Go+","Renault Kwid","Audi R8","Ford Freestyle","Volkswagen Polo GTI");
