@@ -156,8 +156,8 @@
         </div>
 
         <!-----------------------Filer---------------------------------------->
-        <div class="row" style="height: 1000px;padding-top: 20px; background: #FAFAFA">
-            <div class="col s3 white z-depth-1" style="height: 400px">
+        <div class="row" style="padding: 20px; background: #FAFAFA">
+            <div class="col s2 m2 white z-depth-1 collapsible-clas">
                 <ul class="collapsible">
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
@@ -212,8 +212,163 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/mi.js"></script>
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
         <script>
-           
+
+            function search(va){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        //document.getElementById("demo").innerHTML = this.responseText;
+                        console.log("hi"+this.responseText);
+                        $("#search-results").empty();
+                        $("#search-results").prepend(this.responseText);
+                    }
+                };
+                xhttp.open("GET", "search.php?q="+va, true);
+                xhttp.send();
+            }
+            //logout function
+            function logout(){
+                $.removeCookie('username', { path: '/' });
+                $("#user-id").hide();
+                $("#loginModal-id").show();
+                $("#userl").empty();
+                M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
+            }
+            //login function
+            $(document).ready(function() {
+                //console.log("username : "+ $.cookie("username"));
+
+                //search-field keypress event
+                $("#searchf").keyup(function(){
+                    var q = $("#searchf").val();
+                    console.log("keypress event fired"+ $("#searchf").val());
+                    search(q);
+                });
+
+                $('.aluser').on('click',function(){
+                    console.log("cliock");
+                    $('#reg-content').hide();
+                    $('#log-content').show();
+                    
+                });
+
+                if (document.cookie.indexOf('city') == -1 ) {
+                    console.log("empty");
+                }else{
+                    $('#cityli').empty();
+                    $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +$.cookie("city"));
+                }
+
+                //city card on click listener
+                $(".city1").click(function(){
+                    var cname = $(this).text().trim();
+                    if (cname==="Mumbai") {
+                        console.log("m");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Chennai"){
+                        console.log("ch");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Kolkata"){
+                        console.log("ko");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else if(cname==="Delhi"){
+                        console.log("del");
+                        $.cookie("city", cname , { path : '/' });
+                        $('#cityli').empty();
+                        $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
+                    }else{
+                        console.log("fuck");
+                    } 
+                });
+                //login function
+                function login(){
+                    if (document.cookie.indexOf('username') == -1 ) {
+                        //console.log("empty");
+                        $("#user-id").hide();
+                    }else{
+                        $("#loginModal-id").hide();
+                        $("#user-id").show();
+                        $("#userl").prepend($.cookie("username"));
+                    }
+                }
+                login();
+
+                //Preloader
+                $(window).on("load", function() {
+                    preloaderFadeOutTime = 1000;
+                    function hidePreloader() {
+                        var preloader = $('.spinner-wrapper');
+                        preloader.fadeOut(preloaderFadeOutTime);
+                    }
+                    hidePreloader();
+                });
+
+                //ajax login form submit
+                $('#login-form').submit(function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: $('#login-form').attr('method'),
+                        url: $('#login-form').attr('action'),
+                        data: $('#login-form').serialize(),
+                        success: function (data) {
+                            //console.log('Submission was successful.');
+                            //console.log(data);
+                            if(data==="found"){
+                                $("#loginModal-id").hide();
+                                $("#user-id").show();
+                                M.toast({html: 'Login successfully', classes: 'rounded toast-mod'});
+                                //$("#userl").prepend($.cookie("username"));
+                                login();
+                                $('.modal').modal('close');
+                            }else{
+                                M.toast({html: 'Invalid username or passwords', classes: 'rounded toast-mod'});
+                            }
+                        },
+                        error: function (data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
+                });
+
+                //ajax register form submit
+                $('#register-form').submit(function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: $('#register-form').attr('method'),
+                        url: $('#register-form').attr('action'),
+                        data: $('#register-form').serialize(),
+                        success: function (data) {
+                            //console.log('Submission was successful.');
+                            //console.log(data);
+                            if(data==="done"){
+                                M.toast({html: 'Registered successfully', classes: 'rounded toast-mod'});
+                                M.toast({html: 'Login to continue...', classes: 'rounded toast-mod'});
+                                $('#reg-content').hide();
+                                $('#log-content').show();
+                            }else{
+                                alert("Try again later...!");
+                                $('.modal').modal().close();
+                            }
+                        },
+                        error: function (data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
+                });
+            });
+
         </script>
     </body>
 </html>

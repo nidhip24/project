@@ -18,6 +18,16 @@
 	}
 }
 
+.collapsible{
+	margin : 0px !important;
+}
+
+
+
+.collapsible-clas{
+	padding: 0px !important;
+}
+
 .modal{
     width:55% !important;
     height: 60% !important;
