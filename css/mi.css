@@ -7,7 +7,6 @@
 }
 .city-cards{
 	margin-top: : 20px !important;
-	padding-left: 20px !important;
 }
 
 @media screen and (min-width: 300px) and (min-width: 480px){
@@ -61,4 +60,14 @@
 .input-field input:focus {
 	border-bottom: 1px solid #64b5f6 !important;
 	box-shadow: 0 1px 0 0 #64b5f6 !important;
+}
+
+#choose-city{
+
+	background: transparent;
+}
+.img_size{
+	width: 130px;
+	height: 170px;
+
 }
