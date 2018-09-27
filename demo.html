@@ -1,0 +1,27 @@
+<form id="contactForm1" action="php/login.php" method="post">
+    <!-- Form input fields here (do not forget your name attributes). -->
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <input type="submit">
+</form>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+
+    $('#contactForm1').submit(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            type: $('#contactForm1').attr('method'),
+            url: $('#contactForm1').attr('action'),
+            data: $('#contactForm1').serialize(),
+            success: function (data) {
+                
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    });
+</script>
