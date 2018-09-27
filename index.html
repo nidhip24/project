@@ -131,22 +131,22 @@
         <div id="choose-city" class="modal">
             <div class="modal-content">
                 <div class="row city-cards">
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
                             <span class="white-text">Mumbai</span>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Chennai</span>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Kolkata</span>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
+                    <div class="col s12 m4 city1" id="city1">
                         <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
                             <span class="white-text">Delhi</span>
                         </div>
@@ -167,7 +167,7 @@
                                     <label class="label-icon" for="searchf"><i class="material-icons">search</i></label>
                                     <i class="material-icons">close</i>
                                     <div class="collection" id="search-results">
-                                        <a href="#!" class="collection-item">Alvin</a>
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -299,8 +299,9 @@
                         $('#cityli').empty();
                         $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
                     }else{
-                        console.log("fuck");
-                    } 
+                        //console.log("fuck");
+                    }
+                    $('.modal').modal('close');
                 });
                 //login function
                 function login(){
