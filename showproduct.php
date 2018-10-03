@@ -133,7 +133,6 @@
             </div>
         </div>
 
-        <!----------------------Search Modal--------------------------------->
         <div id="search-mod" class="modal transparent search-modal" >
             <div class="modal-content">
                 <div class="row">
@@ -141,11 +140,11 @@
                         <div class="nav-wrapper blue">
                             <form>
                                 <div class="input-field">
-                                    <input id="searchf" type="search" required>
-                                    <label class="label-icon" for="searchf"><i class="material-icons">search</i></label>
+                                    <input id="searchf" type="search" required style="margin: 0px">
+                                    <label class="label-icon" for="searchf" id="closemodal"><i class="material-icons" >search</i></label>
                                     <i class="material-icons">close</i>
-                                    <div class="collection" id="search-results">
-                                        <a href="#!" class="collection-item">Alvin</a>
+                                    <div class="collection" id="search-results" style="margin: 0px">
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -155,9 +154,10 @@
             </div>
         </div>
 
+
         <!-----------------------Filer---------------------------------------->
         <div class="row" style="padding: 20px; background: #FAFAFA">
-            <div class="col s2 m2 white z-depth-1 collapsible-clas">
+            <!-- <div class="col s2 m2 white z-depth-1 collapsible-clas">
                 <ul class="collapsible">
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
@@ -172,9 +172,19 @@
                         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                         </li>
                 </ul>
-            </div>            
-            <div class="col s8">
-                
+            </div> -->         
+            <div class="container">
+                <div class="col s12">
+                <?php
+                include_once("php/database.php");
+
+                // get the q parameter from URL
+                $q = $_REQUEST["id"];
+
+
+
+                ?>
+                </div>
             </div>
         </div>
 
@@ -216,17 +226,25 @@
         <script>
 
             function search(va){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        //document.getElementById("demo").innerHTML = this.responseText;
-                        console.log("hi"+this.responseText);
-                        $("#search-results").empty();
-                        $("#search-results").prepend(this.responseText);
-                    }
-                };
-                xhttp.open("GET", "search.php?q="+va, true);
-                xhttp.send();
+                // var xhttp = new XMLHttpRequest();
+                // xhttp.onreadystatechange = function() {
+                //     if (this.readyState == 4 && this.status == 200) {
+                //         //document.getElementById("demo").innerHTML = this.responseText;
+                //         console.log("hi"+this.responseText);
+                //         $("#search-results").empty();
+                //         $("#search-results").prepend(this.responseText);
+                //     }
+                // };
+                // xhttp.open("GET", "search.php?q="+va, true);
+                // xhttp.send();
+                $("#search-results").empty();
+                $.getJSON("search.php?q="+va, function(data){
+                    $("#search-results").empty();
+                    $.each(data, function () {
+                        $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"'class='collection-item black-text'>"+ this.modelname +"</a>");
+                        //console.log(value);
+                    });
+                });
             }
             //logout function
             function logout(){

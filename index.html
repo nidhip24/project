@@ -13,6 +13,7 @@
         <style>
             html, body, .block {
                 height: 100%;
+                
             }
             nav ul li a:hover, nav ul li a.active {
                 background-color: rgba(0,0,0,.10);
@@ -127,53 +128,30 @@
                 </div>
             </div>
         </div>
-        <!----------------------Citymodal--------------------------------------->
+        <!----------------------City modal--------------------------------------->
         <div id="choose-city" class="modal transparent">
             <div class="modal-content">
                 <div class="row city-cards">
-<<<<<<< HEAD
-
                      <div class="col s12 m3 city1" value="Mumbai">
                         <div class="card-panel transparent" style="padding: 0px;margin: 0px">
-                            <img src="img\Mum.PNG" class="img_size">
+                            <img src="img\Mum.PNG" class="img_size"><p hidden="trur">Mumbai</p>
                         </div>
                     </div>
                     <div class="col s12 m3 city1" id="c1" value="Chennai">
                         <div class="card-panel transparent" style="padding: 0px;margin: 0px">
-                            <img src="img\chennai.PNG" class="img_size">
+                            <img src="img\chennai.PNG" class="img_size"><p hidden="trur">Chennai</p>
                         </div>
                     </div>
                     <div class="col s12 m3 city1" value="Kolkata">
                         <div class="card-panel transparent" style="padding: 0px;margin: 0px">
-                            <img src="img\kol.PNG" class="img_size">
+                            <img src="img\kol.PNG" class="img_size"><p hidden="trur">Kolkata</p>
                         </div>
                     </div>
                     <div class="col s12 m3 city1" value="Delhi">
                         <div class="card-panel transparent" style="padding: 0px;margin: 0px">
-                            <img src="img\Delhi.PNG" class="img_size">
-=======
-                    <div class="col s12 m4 city1" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
-                            <span class="white-text">Mumbai</span>
+                            <img src="img\Delhi.PNG" class="img_size"><p hidden="trur">Delhi</p>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Chennai</span>
-                        </div>
-                    </div>
-                    <div class="col s12 m4 city1" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Kolkata</span>
-                        </div>
-                    </div>
-                    <div class="col s12 m4 city1" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Delhi</span>
->>>>>>> bc0d5b685b3715d924cd79c119b601087c968abc
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -186,10 +164,10 @@
                         <div class="nav-wrapper blue">
                             <form>
                                 <div class="input-field">
-                                    <input id="searchf" type="search" required>
-                                    <label class="label-icon" for="searchf"><i class="material-icons">search</i></label>
+                                    <input id="searchf" type="search" required style="margin: 0px">
+                                    <label class="label-icon" for="searchf" id="closemodal"><i class="material-icons" >search</i></label>
                                     <i class="material-icons">close</i>
-                                    <div class="collection" id="search-results">
+                                    <div class="collection" id="search-results" style="margin: 0px">
                                         
                                     </div>
                                 </div>
@@ -253,17 +231,24 @@
         <script>
 
             function search(va){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        //document.getElementById("demo").innerHTML = this.responseText;
-                        console.log("hi"+this.responseText);
-                        $("#search-results").empty();
-                        $("#search-results").prepend(this.responseText);
-                    }
-                };
-                xhttp.open("GET", "search.php?q="+va, true);
-                xhttp.send();
+                // var xhttp = new XMLHttpRequest();
+                // xhttp.onreadystatechange = function() {
+                //     if (this.readyState == 4 && this.status == 200) {
+                //         //document.getElementById("demo").innerHTML = this.responseText;
+                //         console.log("hi"+this.responseText);
+                //         $("#search-results").empty();
+                //         $("#search-results").prepend(this.responseText);
+                //     }
+                // };
+                // xhttp.open("GET", "search.php?q="+va, true);
+                // xhttp.send();
+                $.getJSON("search.php?q="+va, function(data){
+                    $("#search-results").empty();
+                    $.each(data, function () {
+                        $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"'class='collection-item black-text'>"+ this.modelname +"</a>");
+                        //console.log(value);
+                    });
+                });
             }
             //logout function
             function logout(){
@@ -284,6 +269,12 @@
                     search(q);
                 });
 
+                //close modal on click
+                $('#closemodal').on('click',function(){
+                    console.log("close");
+                    $('.modal').modal('close');                   
+                });
+
                 $('.aluser').on('click',function(){
                     console.log("cliock");
                     $('#reg-content').hide();
@@ -301,7 +292,7 @@
                 //city card on click listener
                 $(".city1").click(function(){
                     var cname = $(this).text().trim();
-                    if (cname==="Mumbai") {
+                    if (cname.indexOf("Mumbai") != -1 ){
                         console.log("m");
                         $.cookie("city", cname , { path : '/' });
                         $('#cityli').empty();
@@ -322,8 +313,9 @@
                         $('#cityli').empty();
                         $('#cityli').prepend("<i class='material-icons right'>my_location</i>" +cname);
                     }else{
-                        //console.log("fuck");
+                        console.log("fuck");
                     }
+                    console.log("fuck");
                     $('.modal').modal('close');
                 });
                 //login function
