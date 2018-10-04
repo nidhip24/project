@@ -48,10 +48,13 @@
                 'id' => $row['id']
             );
         }
-        echo json_encode($a);
     }else{
-        echo "0";
+        $a[] = array(
+            'modelname' => '-1',
+            'id' => '-1'
+        );
     }
+    echo json_encode($a);
     $conn->close();
     // lookup all hints from array if $q is different from "" 
     // if ($q !== "") {

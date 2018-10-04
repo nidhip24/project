@@ -181,7 +181,7 @@
         <!----------------------Parallax Container------------------------------>
         <div class="parallax-container">
             <div class="parallax">
-                <img class="parallax-img" src="img/back3.jpg" >
+                <img class="parallax-img" src="img/backk.jpg" >
             </div>
         </div>
         <div class="section nav-color black">
@@ -192,7 +192,7 @@
             </div>
         </div>
         <div class="parallax-container">
-            <div class="parallax"><img class="parallax-img" src="img/back3.jpg"></div>
+            <div class="parallax"><img class="parallax-img" src="img/backk.jpg"></div>
         </div>
         
         <!--------------------------Footer------------------------------------>
@@ -245,7 +245,11 @@
                 $.getJSON("search.php?q="+va, function(data){
                     $("#search-results").empty();
                     $.each(data, function () {
-                        $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"'class='collection-item black-text'>"+ this.modelname +"</a>");
+                        if(this.modelname != '-1' && this.id != '-1'){
+                            $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"' class='collection-item black-text'>"+ this.modelname +"</a>");
+                        }else{
+                            $("#search-results").prepend("<a class='collection-item black-text'>No suggestions</a>");
+                        }
                         //console.log(value);
                     });
                 });

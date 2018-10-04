@@ -138,7 +138,7 @@
                 <div class="row">
                     <nav>
                         <div class="nav-wrapper blue">
-                            <form>
+                            <form autocomplete="off">
                                 <div class="input-field">
                                     <input id="searchf" type="search" required style="margin: 0px">
                                     <label class="label-icon" for="searchf" id="closemodal"><i class="material-icons" >search</i></label>
@@ -181,7 +181,36 @@
                 // get the q parameter from URL
                 $q = $_REQUEST["id"];
 
+                $sql = "SELECT * FROM car_info WHERE id='2'";
+                $result = $conn->query($sql);
 
+                $flag = -1;
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $flag=$flag+1;
+                        if($flag%3==0){
+                            echo "<div class='row grey' style='border-radius: 10px'><h4 class='white-text' style='margin:10px'>Search Found: </h4>";
+                        }
+                        //card col
+                        echo "<div class='col s12 m4'>";
+                        //image
+                        echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
+                        //content
+                        echo "<div class='card-content'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div>";
+                        //reveal
+                        echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
+                        //close
+                        echo "</div>";
+                        if($flag%2==0){
+                            echo "</div>";
+                        }
+                    }
+                    if ($flag<2) {
+                        echo "</div>";
+                    }
+                }else{
+
+                }
 
                 ?>
                 </div>
@@ -241,7 +270,11 @@
                 $.getJSON("search.php?q="+va, function(data){
                     $("#search-results").empty();
                     $.each(data, function () {
-                        $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"'class='collection-item black-text'>"+ this.modelname +"</a>");
+                        if(this.modelname != '-1' && this.id != '-1'){
+                            $("#search-results").prepend("<a href='showproduct.php?id="+this.id+"' class='collection-item black-text'>"+ this.modelname +"</a>");
+                        }else{
+                            $("#search-results").prepend("<a class='collection-item black-text'>No suggestions</a>");
+                        }
                         //console.log(value);
                     });
                 });
