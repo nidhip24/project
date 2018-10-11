@@ -173,8 +173,7 @@
                         </li>
                 </ul>
             </div> -->         
-            <div class="container">
-                <div class="col s12">
+            <div class="row container">
                 <?php
                 include_once("php/database.php");
 
@@ -201,22 +200,59 @@
                         echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
                         //close
                         echo "</div>";
-                        if($flag%2==0){
+                        if($flag%3==0){
                             echo "</div>";
                         }
                     }
-                    if ($flag<2) {
-                        echo "</div>";
+                    if (($flag%3)<2) {
+                        echo "</div>aa";
                     }
                 }else{
 
                 }
 
                 ?>
-                </div>
             </div>
-        </div>
+            <div class="row container">
+                    <?php
+                        include_once("php/database.php");
 
+                        // get the q parameter from URL
+                        $q = $_REQUEST["id"];
+                        $city = "";
+                        if(!isset($_COOKIE["city"])) {
+                            $sql = "SELECT * FROM car_info";
+                        }else{
+                            $city =$_COOKIE["city"];
+                            $sql = "SELECT * FROM car_info WHERE city='$city'";
+                        }
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            echo "<div class='row'>";
+                            $i=0;
+                            while($i<3){
+                                while($row = $result->fetch_assoc()) {
+                                    $i = $i + 1 ;
+                                    //card col
+                                    echo "<div class='col s4'>";
+                                    //image
+                                    echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
+                                    //content
+                                    echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div>";
+                                    //reveal
+                                    echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
+                                    //close
+                                    echo "</div></div>";
+                                }
+                            }
+                            echo "</div>";
+                        }else{
+
+                        }
+                    ?>
+                </div>
+                </div>
 
         <!--------------------------Footer------------------------------------>
         <footer class="page-footer black">

@@ -22,7 +22,9 @@
 	margin : 0px !important;
 }
 
-
+.card-content{
+	height : 200px !important;
+}
 
 .collapsible-clas{
 	padding: 0px !important;
