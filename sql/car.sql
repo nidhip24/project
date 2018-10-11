@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 07:08 PM
+-- Generation Time: Oct 11, 2018 at 08:23 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -50,7 +50,10 @@ CREATE TABLE `car_info` (
 --
 
 INSERT INTO `car_info` (`id`, `sold`, `company`, `model`, `fuel`, `year`, `kms`, `state`, `city`, `details`, `price`, `phone_number`, `username`, `img`) VALUES
-(2, 'false', 'Hyundai', 'Volvo XC90', 'Petrol', 543, 15909, 'Maharashtra', 'mumbai', 'sddddddddddddddddddddddddddddddddcccccccccccccccccccccccccccc', 4000001131, 9967188022, 'nidhip_24', 'nidhip_24_');
+(2, 'false', 'Hyundai', 'Volvo XC90', 'Petrol', 543, 15909, 'Maharashtra', 'mumbai', 'sddddddddddddddddddddddddddddddddcccccccccccccccccccccccccccc', 4000001131, 9967188022, 'nidhip_24', 'nidhip_24_'),
+(3, 'false', 'BMW', 'BMW 5 Series 520d Luxury Line', 'Petrol', 543, 10000, 'maharashtra', 'mumbai', 'kqjlwjdhksmcq jnrunxc hqiewf wdwjfsdd', 1891236, 1234567890, 'nk', 'nk_2'),
+(4, 'false', 'Audi', 'Audi R8', 'Petrol', 543, 10000, 'maharashtra', 'mumbai', 'kqjlwjdhksmcq jnrunxc hqiewf wdwjfsdd', 1891236, 1234567890, 'nk', 'nk_3'),
+(5, 'false', 'Volkswagen', 'Volkswagen Polo GTI', 'Petrol', 543, 10000, 'maharashtra', 'mumbai', 'kqjlwjdhksmcq jnrunxc hqiewf wdwjfsdd', 1891236, 1234567890, 'nk', 'nk_4');
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,7 @@ ALTER TABLE `userdata`
 -- AUTO_INCREMENT for table `car_info`
 --
 ALTER TABLE `car_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
