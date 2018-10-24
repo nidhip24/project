@@ -105,28 +105,28 @@
                 </div>
             </div>
         </div>
-        <!----------------------Citymodal--------------------------------------->
-        <div id="choose-city" class="modal">
+        <!----------------------City modal--------------------------------------->
+        <div id="choose-city" class="modal transparent">
             <div class="modal-content">
                 <div class="row city-cards">
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 40px">
-                            <span class="white-text">Mumbai</span>
+                     <div class="col s12 m3 city1" value="Mumbai">
+                        <div class="card-panel transparent" style="padding: 0px;margin: 0px">
+                            <img src="img\Mum.PNG" class="img_size"><p hidden="trur">Mumbai</p>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Chennai</span>
+                    <div class="col s12 m3 city1" id="c1" value="Chennai">
+                        <div class="card-panel transparent" style="padding: 0px;margin: 0px">
+                            <img src="img\chennai.PNG" class="img_size"><p hidden="trur">Chennai</p>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Kolkata</span>
+                    <div class="col s12 m3 city1" value="Kolkata">
+                        <div class="card-panel transparent" style="padding: 0px;margin: 0px">
+                            <img src="img\kol.PNG" class="img_size"><p hidden="trur">Kolkata</p>
                         </div>
                     </div>
-                    <div class="col s12 m4 city1" value="mumbai" id="city1">
-                        <div class="card-panel black" style="margin-top: 20px;margin-left: 20px">
-                            <span class="white-text">Delhi</span>
+                    <div class="col s12 m3 city1" value="Delhi">
+                        <div class="card-panel transparent" style="padding: 0px;margin: 0px">
+                            <img src="img\Delhi.PNG" class="img_size"><p hidden="trur">Delhi</p>
                         </div>
                     </div>
                 </div>
@@ -178,47 +178,46 @@
                 include_once("php/database.php");
 
                 // get the q parameter from URL
-                $q = $_REQUEST["id"];
+                if ( isset( $_GET['id'] ) ) {
+                    $q = $_REQUEST["id"];
+                
 
-                $sql = "SELECT * FROM car_info WHERE id='2'";
-                $result = $conn->query($sql);
+                    $sql = "SELECT * FROM car_info WHERE id='$q'";
+                    $result = $conn->query($sql);
 
-                $flag = -1;
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        $flag=$flag+1;
-                        if($flag%3==0){
-                            echo "<div class='row grey' style='border-radius: 10px'><h4 class='white-text' style='margin:10px'>Search Found: </h4>";
+                    $flag = -1;
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $flag=$flag+1;
+                            if($flag%3==0){
+                                echo "<div class='row grey' style='border-radius: 10px'><h4 class='white-text' style='margin:10px'>Search Found: </h4>";
+                            }
+                            //card col
+                            echo "<div class='col s12 m4'>";
+                            //image
+                            echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
+                            //content
+                            echo "<div class='card-content'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a href='#'>GET DETAILS</a></div>";
+                            //reveal
+                            echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
+                            //close
+                            echo "</div>";
+                            if($flag%3==0){
+                                echo "</div>";
+                            }
                         }
-                        //card col
-                        echo "<div class='col s12 m4'>";
-                        //image
-                        echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
-                        //content
-                        echo "<div class='card-content'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div>";
-                        //reveal
-                        echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
-                        //close
-                        echo "</div>";
-                        if($flag%3==0){
+                        if (($flag%3)<2) {
                             echo "</div>";
                         }
-                    }
-                    if (($flag%3)<2) {
-                        echo "</div>aa";
-                    }
-                }else{
+                    }else{
 
+                    }
                 }
-
                 ?>
             </div>
             <div class="row container">
                     <?php
-                        include_once("php/database.php");
 
-                        // get the q parameter from URL
-                        $q = $_REQUEST["id"];
                         $city = "";
                         if(!isset($_COOKIE["city"])) {
                             $sql = "SELECT * FROM car_info";
@@ -239,7 +238,7 @@
                                     //image
                                     echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
                                     //content
-                                    echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div>";
+                                    echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a href='#'>GET DETAILS</a></div>";
                                     //reveal
                                     echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
                                     //close
