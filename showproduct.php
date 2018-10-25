@@ -16,7 +16,7 @@
         <div class="navbar-fixed">
             <nav class="nav-color  black">
                 <div class="container nav-wrapper">
-                    <a href="#!" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
+                    <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down" id="nav-list">
                         <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
@@ -197,7 +197,7 @@
                             //image
                             echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
                             //content
-                            echo "<div class='card-content'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a href='#'>GET DETAILS</a></div>";
+                            echo "<div class='card-content'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a onclick='sendMail(".$row['id'].")'>GET DETAILS</a></div>";
                             //reveal
                             echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
                             //close
@@ -238,7 +238,7 @@
                                     //image
                                     echo "<div class='card'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
                                     //content
-                                    echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a href='#'>GET DETAILS</a></div>";
+                                    echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a onclick='sendMail(".$row['id'].")'>GET DETAILS</a></div>";
                                     //reveal
                                     echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
                                     //close
@@ -247,7 +247,7 @@
                             }
                             echo "</div>";
                         }else{
-
+                            echo "<h4>No result found for city you selected</h4>";
                         }
                     ?>
                 </div>
@@ -281,7 +281,6 @@
             </div>
         </footer>
             
-
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -312,7 +311,7 @@
                         }
                         //console.log(value);
                     });
-                });
+                });    
             }
             //logout function
             function logout(){
@@ -322,6 +321,20 @@
                 $("#userl").empty();
                 M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
             }
+
+            //sendmail function
+            function sendMail(d){
+                console.log(d);
+                $.post("php/sendmail.php",
+                {
+                    id: d,
+                    user: $.cookie("username")
+                },
+                function(data, status){
+                    
+                });
+            }
+
             //login function
             $(document).ready(function() {
                 //console.log("username : "+ $.cookie("username"));

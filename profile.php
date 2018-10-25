@@ -26,7 +26,7 @@
 
     <body>
         <!------------------Preloader---------------->
-        <div class="spinner-wrapper">
+        <!-- <div class="spinner-wrapper">
             <div class="spinner">
                 <div class="rect1"></div>
                 <div class="rect2"></div>
@@ -34,7 +34,7 @@
                 <div class="rect4"></div>
                 <div class="rect5"></div>
             </div>
-        </div>
+        </div> -->
         <!----------------------Navigation Bar------------------------------>
         <div class="navbar-fixed">
             <nav class="nav-color z-depth-5 black">
@@ -244,23 +244,48 @@
             </div>
         </div>
 
-        <!----------------------Parallax Container------------------------------>
-        <div class="parallax-container">
-            <div class="parallax">
-                <img class="parallax-img" src="img/backk.jpg" >
-            </div>
-        </div>
-        <div class="section nav-color black">
-            <div class="row container">
-                <h2 class="header white-text">Sell and buy car</h2>
-                <p class="grey-text text-darken-3 lighten-3">Selling your vehicle through online system can be the easiest and the most profitable option. The process of its work is almost same as that of the traditional medium, and you will never become confused. However, the most important point is that there are many websites that will allow you to sell your car online for free. Thus, you can post your advertisement without investing any money. But the time it takes to sell a car privately ranges from a few hours to never. It is because of the countless factors which influence the decision making process. However, if you start out with right price and expectations then it becomes easier for you to sell your car. Internet is thus the most user-friendly option that can give you the best car selling experience.</p>
+        <!---------------------------Content----------------------------------->
+        <div class="row container">
+            <h3>Uploaded car ads</h3>
+            <?php
+                include_once("php/database.php");
+                $usernn = "";
+                if(!isset($_COOKIE["username"])) {
+                    $sql = "SELECT * FROM car_info";
+                }else{
+                    $usernn =$_COOKIE["username"];
+                    //echo $usernn;
+                    $sql = "SELECT * FROM car_info where username='$usernn'";
+                }
+                $result = $conn->query($sql);
 
-            </div>
+                if ($result->num_rows > 0) {
+                    echo "<div class='row'>";
+                    $i=0;
+                    while($i<3){
+                        while($row = $result->fetch_assoc()) {
+                            $i = $i + 1 ;
+                            //card col
+                            echo "<div class='col s4'>";
+                            //image
+                            echo "<div class='card' id='".$row['id']."'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
+                            //content
+                            echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a onclick='removeads(".$row['id'].")'>REMOVE AD</a></div>";
+                            //reveal
+                            echo "<div class='card-reveal'><span class='card-title grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>close</i></span><p>Company :".$row['company']."</p><p>Fuel :".$row['fuel']."</p><p>KM :".$row['kms']."</p><p>Price :".$row['price']."</p></div>";
+                            //close
+                            echo "</div></div>";
+                        }
+                    }
+                    echo "</div>";
+                }else{
+
+                }
+            ?>
         </div>
-        <div class="parallax-container">
-            <div class="parallax"><img class="parallax-img" src="img/backk.jpg"></div>
-        </div>
-        
+
+
+
         <!--------------------------Footer------------------------------------>
         <footer class="page-footer black">
             <div class="container">
@@ -329,6 +354,20 @@
                 $("#userl").empty();
                 M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
             }
+
+            //sendmail function
+            function removeads(d){
+                console.log(d);
+                $.post("php/removead.php",
+                {
+                    id: d
+                },
+                function(data, status){
+                    $("#"+d).remove();
+                    console.log(data);
+                });
+            }
+
             //login function
             $(document).ready(function() {
                 //console.log("username : "+ $.cookie("username"));
