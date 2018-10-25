@@ -39,7 +39,7 @@
         <div class="navbar-fixed">
             <nav class="nav-color z-depth-5 black">
                 <div class="container nav-wrapper">
-                    <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
+                    <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>BIG BOY TOYZ</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down" id="nav-list">
                         <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>
@@ -255,7 +255,7 @@
                 }else{
                     $usernn =$_COOKIE["username"];
                     //echo $usernn;
-                    $sql = "SELECT `id`, `sold`, `company`, `model`, `fuel`, `year`, `kms`, `state`, `city`, `details`, `price`, `phone_number`, `username`, `img` FROM `car_info` WHERE  username='nk'";
+                    $sql = "SELECT * FROM car_info where username='$usernn'";
                 }
                 $result = $conn->query($sql);
 
@@ -268,7 +268,7 @@
                             //card col
                             echo "<div class='col s4'>";
                             //image
-                            echo "<div class='card' id='".$row['id']."'> <div class='card-image waves-effect waves-block waves-light'><img class='activator' src='img/back.jpg'></div>";
+                            echo "<div class='card' id='".$row['id']."'> <div class='card-image waves-effect waves-block waves-light img-card'><img class='activator' style='height:200px' src='php/img/".$row['img']."'></div>";
                             //content
                             echo "<div class='card-content' style='height:100px'><span class='card-title activator grey-text text-darken-4'>".$row['model']."<i class='material-icons right'>more_vert</i></span></div><div class='card-action'><a onclick='removeads(".$row['id'].")'>REMOVE AD</a></div>";
                             //reveal

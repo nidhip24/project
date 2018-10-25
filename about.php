@@ -39,7 +39,7 @@
         <div class="navbar-fixed">
             <nav class="nav-color z-depth-2 black">
                 <div class="container nav-wrapper">
-                    <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>Car Becho</a>
+                    <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 40px">directions_car</i>BIG BOY TOYZ</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down" id="nav-list">
                         <li data-target="loginModal" class="modal-trigger" id="loginModal-id"><a href="#"><i class="material-icons right">tag_faces</i>Login/Register</a></li>

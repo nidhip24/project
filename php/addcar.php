@@ -6,8 +6,8 @@
 
 	define ('SITE_ROOT', realpath(dirname(__FILE__)));
 
-	$target_dir = "C:/Users/nidhi/Desktop/img/";
-	$target_file = $target_dir . $fname .basename($_FILES["images"]["name"]);
+	$target_dir = "img/";
+	$target_file = SITE_ROOT."/img/" . $fname .basename($_FILES["images"]["name"]);
 	$fname = $fname .basename($_FILES["images"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -59,7 +59,12 @@
 			}else{			
 				if ($conn->query($sql) === TRUE) {
 				    echo "done";
+				    header("Location: http://localhost/projectv2/");
+					die();
 				} else {
+					echo "<script type='text/javascript'>alert('Try again after some time....');</script>";
+					header("Location: http://localhost/projectv2/");
+					die();
 				    echo "Error: " . $sql . "<br>" . $conn->error;
 				}
 			}
