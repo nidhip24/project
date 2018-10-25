@@ -266,7 +266,7 @@
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                            <li><a class="grey-text text-lighten-3" href="about.php">About us</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">Terms and conditions</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">Privacy Policy</a></li>
                         </ul>

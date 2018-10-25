@@ -3,64 +3,73 @@
 
 	$user = $_COOKIE["username"];
 	$fname = $user . "_";
-	//echo $fname;
-	$num = mt_rand(0,999999);
-	$fname.=$num;
 
-	// if(isset($_FILES['image'])){
-      	// $errors= array();
-      	// $file_name = $_FILES['image']['name'];
-      	// $file_size = $_FILES['image']['size'];
-      	// $file_tmp = $_FILES['image']['tmp_name'];
-      	// $file_type = $_FILES['image']['type'];
-      	// $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-      
+	define ('SITE_ROOT', realpath(dirname(__FILE__)));
 
-      	// $expensions= array("jpeg","jpg","png");
-      
-      	// if(in_array($file_ext,$expensions)=== false){
-       //   	$errors[]="extension not allowed, please choose a JPEG or PNG file.";
-      	// }
-      
-      	// if($file_size > 2097152) {
-       //   	$errors[]='File size must be excately 2 MB';
-      	// }
-      
-      	// if(empty($errors)==true) {
-      	// 	$fname.=".".$file_ext;
-       //   	move_uploaded_file($file_tmp,"img/user/".$file_name);
-       //   	echo "Success";
-      	// }else{
-       //   	print_r($errors);
-      	// }
-		$fname.=".jpg";
-   	
-		$company = $_POST["company"];
-		$model = $_POST["model"];
-		$fuel = $_POST["fuel"];
-		$kmss = $_POST["kilom"];
-		$year = $_POST["year"];
-		$state = $_POST["state"];
-		$city = $_POST["city"];
-		$detail = $_POST["detail"];
-		$pno = $_POST["pno"];
-		$price = $_POST["price"];
-		$user = $_COOKIE["username"];
+	$target_dir = "C:/Users/nidhi/Desktop/img/";
+	$target_file = $target_dir . $fname .basename($_FILES["images"]["name"]);
+	$fname = $fname .basename($_FILES["images"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	// Check if image file is a actual image or fake image
+	if(isset($_POST["submit"])) {
+	    $check = getimagesize($_FILES["images"]["tmp_name"]);
+	    if($check !== false) {
+	        //echo "File is an image - " . $check["mime"] . ".";
+	        $uploadOk = 1;
+	    } else {
+	        //echo "File is not an image.";
+	        $uploadOk = 0;
+	    }
+	}
+	// Check if file already exists
+	if (file_exists($target_file)) {
+	    //echo "try again";
+	    $uploadOk = 0;
+	}
+	// Allow certain file formats
+	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
+	    //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+	    $uploadOk = 0;
+	}
+	// Check if $uploadOk is set to 0 by an error
+	if ($uploadOk == 0) {
+	    //echo "Sorry, your file was not uploaded.";
+	// if everything is ok, try to upload file
+	} else {
+	    if (move_uploaded_file($_FILES["images"]["tmp_name"], "".$target_file)) {
+	        //echo "The file ". basename( $_FILES["images"]["name"]). " has been uploaded.";
+	        $company = $_POST["company"];
+			$model = $_POST["model"];
+			$fuel = $_POST["fuel"];
+			$kmss = $_POST["kilom"];
+			$year = $_POST["year"];
+			$state = $_POST["state"];
+			$city = $_POST["city"];
+			$detail = $_POST["detail"];
+			$pno = $_POST["pno"];
+			$price = $_POST["price"];
+			$user = $_COOKIE["username"];
 
-		echo $fuel;
-
-		if($company=="" || $model=="" || $fuel="" || $kmss="" || $year=="" || $state=="" || $city="" || $pno="" || $detail="" || $price=""){
-			echo "f";
-		}else{
-			echo $fuel . $kmss;			
 			$sql = "INSERT INTO `car_info`(`sold`, `company`, `model`, `fuel`, `year`, `kms`, `state`, `city`, `details`, `price`, `phone_number`, `username`, `img`) VALUES ('false','$company','$model','$fuel','$year','$kmss','$state','$city','$detail','$price','$pno','$user','$fname')";
+			//echo $fuel." ".$company." ".$model." ".$kmss." ".$year." ".$state." ".$city." ".$detail." ".$pno." ".$price;
 
-			if ($conn->query($sql) === TRUE) {
-			    echo "done";
-			} else {
-			    echo "Error: " . $sql . "<br>" . $conn->error;
+			if($company=="" || $model=="" || $fuel="" || $kmss="" || $year=="" || $state=="" || $city="" || $pno="" || $detail="" || $price=""){
+				echo "f";
+			}else{			
+				if ($conn->query($sql) === TRUE) {
+				    echo "done";
+				} else {
+				    echo "Error: " . $sql . "<br>" . $conn->error;
+				}
 			}
-		}
+	    } else {
+	    	$uploadOk = 0;
+	        //echo "Sorry, there was an error uploading your file.";
+	    }
+	}
+   	
+		
 	// }else{
 	// 	echo  "image not set";
 	// }

@@ -255,7 +255,7 @@
                 }else{
                     $usernn =$_COOKIE["username"];
                     //echo $usernn;
-                    $sql = "SELECT * FROM car_info where username='$usernn'";
+                    $sql = "SELECT `id`, `sold`, `company`, `model`, `fuel`, `year`, `kms`, `state`, `city`, `details`, `price`, `phone_number`, `username`, `img` FROM `car_info` WHERE  username='nk'";
                 }
                 $result = $conn->query($sql);
 

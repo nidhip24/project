@@ -206,15 +206,13 @@
                             <label for="year">Year</label>
                         </div>
                         <div class="input-field col s3">
-                            <div class="file-field input-field">
                                 <div class="btn">
                                     <span>File</span>
-                                    <input type="file" name = "image">
+                                    <input type="file" name="images">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text">
                                 </div>
-                            </div>
                         </div>
                         <div class="input-field col s6">
                             <input id="state" type="text" class="validate" name="state">
@@ -274,7 +272,7 @@
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">About us</a></li>
+                            <li><a class="grey-text text-lighten-3" href="about.php">About us</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">Terms and conditions</a></li>
                             <li><a class="grey-text text-lighten-3" href="#!">Privacy Policy</a></li>
                         </ul>
@@ -442,31 +440,33 @@
                 });
 
 
-                //ajax add ccar form submit
-                $('#car-detail-form').submit(function (e) {
-                    e.preventDefault();
+                // //ajax add ccar form submit
+                // $('#car-detail-form').submit(function (e) {
+                //     e.preventDefault();
 
-                    $.ajax({
-                        type: $('#car-detail-form').attr('method'),
-                        url: $('#car-detail-form').attr('action'),
-                        data: $('#car-detail-form').serialize(),
-                        success: function (data) {
-                            //console.log('Submission was successful.');
-                            console.log(data);
-                            if(data==="done"){
+                //     $.ajax({
+                //         type: $('#car-detail-form').attr('method'),
+                //         url: $('#car-detail-form').attr('action'),
+                //         data: $('#car-detail-form').serialize(),
+                //         success: function (data) {
+                //             //console.log('Submission was successful.');
+                //             console.log(data);
+                //             if(data==="done"){
                                 
-                                M.toast({html: 'Car details added successfully', classes: 'rounded toast-mod'});
-                                $('.modal').modal('close');
-                            }else{
-                                M.toast({html: 'Invalid username or passwords', classes: 'rounded toast-mod'});
-                            }
-                        },
-                        error: function (data) {
-                            console.log('An error occurred.');
-                            console.log(data);
-                        },
-                    });
-                });
+                //                 M.toast({html: 'Car details added successfully', classes: 'rounded toast-mod'});
+                //                 $('.modal').modal('close');
+                //             }else{
+                //                 M.toast({html: 'try again after some time', classes: 'rounded toast-mod'});
+                //                 M.toast({html: data, classes: 'rounded toast-mod'});
+                //             }
+                //         },
+                //         error: function (data) {
+                //             console.log('An error occurred.');
+                //             M.toast({html: data, classes: 'rounded toast-mod'});
+                //             console.log(data);
+                //         },
+                //     });
+                // });
 
 
                 //ajax register form submit
