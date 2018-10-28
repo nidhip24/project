@@ -261,10 +261,8 @@
 
                 if ($result->num_rows > 0) {
                     echo "<div class='row'>";
-                    $i=0;
-                    while($i<3){
                         while($row = $result->fetch_assoc()) {
-                            $i = $i + 1 ;
+                            
                             //card col
                             echo "<div class='col s4'>";
                             //image
@@ -276,7 +274,6 @@
                             //close
                             echo "</div></div>";
                         }
-                    }
                     echo "</div>";
                 }else{
 
@@ -353,6 +350,7 @@
                 $("#loginModal-id").show();
                 $("#userl").empty();
                 M.toast({html: 'Logged out', classes: 'rounded toast-mod'});
+                window.location.replace("index.html");
             }
 
             //sendmail function

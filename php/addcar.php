@@ -63,7 +63,7 @@
 					die();
 				} else {
 					echo "<script type='text/javascript'>alert('Try again after some time....');</script>";
-					header("Location: http://localhost/projectv2/");
+					header("Location: http://localhost/project2/");
 					die();
 				    echo "Error: " . $sql . "<br>" . $conn->error;
 				}
